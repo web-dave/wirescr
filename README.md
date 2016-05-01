@@ -42,17 +42,17 @@ This way you can replace the regular files used in a development environment wit
 
 ### Examples
 
-Given a directory:
+example structur:
 
 ```
 -- dist
    -- css
-      styles.1234abc.css
+      style.css
       -- subdir
          main.css
    -- js
       vendor.js
-      build.4567def.js
+      scripts.js
       -- subdir
          main.js
 ```
@@ -67,7 +67,8 @@ will result in the file `dist/index.html`:
      <title>Home</title>
 
      <!-- inject:css -->
-     <link rel="stylesheet" href="dist/css/styles.1234abc.css">
+     <link rel="stylesheet" href="dist/css/style.css">
+     <link rel="stylesheet" href="dist/css/subdir/main.css">
      <!-- endinject -->
 
    </head>
@@ -75,51 +76,12 @@ will result in the file `dist/index.html`:
 
      <!-- inject:js -->
      <script src="dist/js/vendor.js"></script>
-     <script src="dist/js/build.4567def.js"></script>
+     <script src="dist/js/scripts.js"></script>
+     <script src="dist/js/subdir/main.js"></script>
      <!-- endinject -->
 
    </body>
    </html>
 ```
 
-*Notice that the code*
-```
-     <!-- remove:production -->
-     <script src="http://localhost:35729/livereload.js?snipver=1"></script>
-     <!-- endremove -->
-```
-*has been removed.*
-
-Specifying a single file instead of a directory will only inject that single file:
-
-`wiresrc -i index.html -o dist/index.html -c dist/css -j dist/js/build.4567def.js -r production`
-
-results in:
-
-```html
-   <!DOCTYPE html>
-   <html>
-   <head>
-     <title>Home</title>
-
-     <!-- inject:css -->
-     <link rel="stylesheet" href="dist/css/styles.1234abc.css">
-     <!-- endinject -->
-
-   </head>
-   <body>
-
-     <!-- inject:js -->
-     <script src="dist/js/build.4567def.js"></script>
-     <!-- endinject -->
-
-   </body>
-   </html>
-```
-
-*Notice that `vendor.js` is not injected.*
-
-### Tests
-
-Run `npm test` to run the tests.
 
