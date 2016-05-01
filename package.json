@@ -2,7 +2,7 @@
     "name": "wire-src",
     "version": "1.0.1",
     "description": "wiresrc inject js and css into html",
-    "main": "wiresrc",
+    "main": "index.js",
     "directories": {
         "test": "tests"
     },
@@ -16,6 +16,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
+    "bin" : { "wiresrc" : "./index.js" },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/web-dave/wirescr.git"
