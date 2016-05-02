@@ -24,7 +24,7 @@
     "url": "git+https://github.com/web-dave/wirescr.git"
   },
   "keywords": [
-    "wiresrc"
+    "wiresrc, inject files, wiredep, buildtool, build, tool"
   ],
   "author": "web-dave <dave@webdave.de> (https://www.webdave.de)",
   "license": "ISC",
