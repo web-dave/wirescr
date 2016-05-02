@@ -23,7 +23,8 @@ const handleError = (message) => {
 };
 
 function fromDir(startPath,filter){
-
+const js = program.js;
+const css = program.css;
     if (!fs.existsSync(startPath)){
         console.log("no dir ",startPath);
         return;
@@ -33,17 +34,21 @@ function fromDir(startPath,filter){
     for(var i=0;i<files.length;i++){
         var filename=(path.join(startPath,files[i])).replace(/\\/g, "/");
         var stat = fs.lstatSync(filename);
+        var res = '';
         if (stat.isDirectory()){
             fromDir(filename,filter);
         }
         else if (filename.indexOf(filter)>=0) {
+            
             switch(filter){
                 case '.js':
-                jsFiles += `<script src="./${filename}"></script>\n`;
-                break;
+                    res = filename.replace(js, "");
+                    jsFiles += `<script src=".${res}"></script>\n`;
+                    break;
                 case '.css':
-                    cssFiles += `<link rel="stylesheet" href="./${filename}">\n`;
-                break;
+                    res = filename.replace(css, "");
+                    cssFiles += `<link rel="stylesheet" href=".${res}">\n`;
+                    break;
             }
         };
     };
