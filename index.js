@@ -23,8 +23,6 @@ const handleError = (message) => {
 };
 
 function fromDir(startPath,filter){
-const js = program.js;
-const css = program.css;
     if (!fs.existsSync(startPath)){
         console.log("no dir ",startPath);
         return;
@@ -34,20 +32,19 @@ const css = program.css;
     for(var i=0;i<files.length;i++){
         var filename=(path.join(startPath,files[i])).replace(/\\/g, "/");
         var stat = fs.lstatSync(filename);
-        var res = '';
+        
         if (stat.isDirectory()){
             fromDir(filename,filter);
         }
         else if (filename.indexOf(filter)>=0) {
             
+            var relPath = path.relative(program.root,filename).replace(/\\/g, "/");
             switch(filter){
                 case '.js':
-                    res = filename.replace(js, "");
-                    jsFiles += `<script src=".${res}"></script>\n`;
+                    jsFiles += `<script src="${relPath}"></script>\n`;
                     break;
                 case '.css':
-                    res = filename.replace(css, "");
-                    cssFiles += `<link rel="stylesheet" href=".${res}">\n`;
+                    cssFiles += `<link rel="stylesheet" href="${relPath}">\n`;
                     break;
             }
         };
@@ -65,6 +62,7 @@ program
 .option('-o, --output <output>', 'Output file (defaults to input when omitted)')
 .option('-c, --css <css>', 'css file(s) to inject (file or directory)')
 .option('-j, --js <js>', 'js file(s) to inject (file or directory)')
+.option('-r, --root <root>', 'src root')
 .parse(process.argv);
 
 if(!program.input) {
@@ -88,25 +86,21 @@ else {
 
 program.output = program.output ? getFullPath(program.output) : program.input;
 
-if(program.js) {
-    const js = program.js;
+if(program.root) {
+    const p = program.root;
 
     try {
-        fromDir(js,'.js');
+        fromDir(p,'.js');
     }
     catch(e) {
-        handleError(`File or folder '${js}' not found`);
+        handleError(`File or folder '${p}' not found`);
     }
-}
-
-if(program.css) {
-    const css = program.css;
 
     try {
-        fromDir(css,'.css');
+        fromDir(p,'.css');
     }
     catch(e) {
-        handleError(`File or folder '${css}' not found`);
+        handleError(`File or folder '${p}' not found`);
     }
 }
 

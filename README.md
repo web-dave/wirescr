@@ -1,5 +1,5 @@
 # A command line utility to inject css and js files into an html file.
-Inspired by [wiredep](https://www.npmjs.com/package/wiredep)  and written because I could not find a command-line equivalent that could work with npm scripts instead of gulp.
+Inspired by [wiredep](https://www.npmjs.com/package/wiredep) and [postbuild](https://www.npmjs.com/package/postbuild)  and written because I could not find a command-line equivalent that could work with npm scripts instead of gulp.
 
 This module injects css and javascript files between markers placed in an html file.
 
@@ -36,15 +36,15 @@ This way you can replace the regular files used in a development environment wit
     -h, --help             output usage information
     -V, --version          output the version number
     -i, --input <input>    Input file
-    -o, --output <output>  Output file (defaults to input when omitted)
-    -c, --css <css>        css file(s) to inject (file or directory)
-    -j, --js <js>          js file(s) to inject (file or directory)
+    -o, --output <output>  Output file
+    -r, --root     <p>        src root
 
 ### Examples
 
 example structur:
 
 ```
+index.tpl.html
 -- dist
    -- css
       style.css
@@ -56,7 +56,7 @@ example structur:
       -- subdir
          main.js
 ```
-`wiresrc -i index.html -o dist/index.html -c dist/css -j dist/js -r production`
+`wiresrc -i index.tpl.html -o dist/index.html -r dist`
 
 will result in the file `dist/index.html`:
 
