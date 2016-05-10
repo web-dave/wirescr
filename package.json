@@ -1,35 +1,35 @@
 {
-    "name": "wire-src",
-    "version": "1.1.1",
-    "description": "wiresrc inject js and css into html",
-    "main": "index.js",
-    "directories": {
-        "test": "tests"
-    },
-    "dependencies": {
-        "commander": "^2.9.0",
-        "faucet": "^0.0.1",
-        "replacestream": "^4.0.0",
-        "tape": "^4.5.1"
-    },
-    "devDependencies": {},
-    "scripts": {
-        "test": "echo \"Error: no test specified\""
-    },
-    "bin": {
-        "wiresrc": "./index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/web-dave/wirescr.git"
-    },
-    "keywords": [
-        "wiresrc, inject files, wiredep, buildtool, build, tool"
-    ],
-    "author": "web-dave <dave@webdave.de> (https://www.webdave.de)",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/web-dave/wirescr/issues"
-    },
-    "homepage": "https://github.com/web-dave/wirescr#readme"
+  "name": "wire-src",
+  "version": "1.1.2",
+  "description": "wiresrc inject js and css into html",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "commander": "^2.9.0",
+    "faucet": "^0.0.1",
+    "replacestream": "^4.0.0",
+    "tape": "^4.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "bin": {
+    "wiresrc": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/web-dave/wirescr.git"
+  },
+  "keywords": [
+    "wiresrc, inject files, wiredep, buildtool, build, tool"
+  ],
+  "author": "web-dave <dave@webdave.de> (https://www.webdave.de)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/web-dave/wirescr/issues"
+  },
+  "homepage": "https://github.com/web-dave/wirescr#readme"
 }
