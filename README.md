@@ -1,4 +1,7 @@
 # A command line utility to inject css and js files into an html file.
+
+[![Build Status](https://travis-ci.org/web-dave/wirescr.svg?branch=master)](https://travis-ci.org/web-dave/wirescr)
+
 Inspired by [wiredep](https://www.npmjs.com/package/wiredep) and [postbuild](https://www.npmjs.com/package/postbuild)  and written because I could not find a command-line equivalent that could work with npm scripts instead of gulp.
 
 This module injects css and javascript files between markers placed in an html file.
