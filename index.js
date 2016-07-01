@@ -40,12 +40,14 @@ function fromDir(startPath, filter) {
             var relPath = path.relative(program.root, filename).replace(/\\/g, "/");
             switch (filter) {
                 case '.js':
-                    if (filename.indexOf('.json') === -1) {
+                    if ((filename.indexOf('.json') === -1)&&(filename.indexOf('.js.map') === -1)) {
                         jsFiles += `<script src="${relPath}"></script>\n`;
                     }
                     break;
                 case '.css':
-                    cssFiles += `<link rel="stylesheet" href="${relPath}">\n`;
+                    if (filename.indexOf('.css.map') === -1) {
+                        cssFiles += `<link rel="stylesheet" href="${relPath}">\n`;
+                    }
                     break;
             }
         };
